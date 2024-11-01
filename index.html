@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run and Bark</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+             background-image: url('croq.jpg');
+             background-size: cover;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            background-image: url('croq.');
+            color: black;
+            padding: 10px 20px;
+        }
+        header img {
+            width: 50px; /* Logo size */
+            margin-right: 15px;
+        }
+        nav {
+            margin: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: black;
+        }
+        .banner {
+            background-image: url('taillechien.jpg');
+             background-size: cover;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            text-shadow: 1px 1px 2px black;
+            text-align: center;
+        }
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+        }
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .product-details, .login-form {
+            display: none;
+            text-align: center;
+            margin: 20px;
+        }
+        button {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.png" alt="Logo"> <!-- Remplacer par le lien de votre logo -->
+    <h1>Run and Bark</h1>
+</header>
+<nav>
+    <a href="#home" onclick="showSection('home')">Accueil</a>
+    <a href="#details" onclick="showSection('product-details')">Détails</a>
+    <a href="#login" onclick="showSection('login-form')">Se connecter</a>
+</nav>
+
+<div id="home" class="banner">
+    <h2>Choisissez la taille de votre chien</h2>
+</div>
+<div id="card-container" class="card-container">
+    <div class="card" onclick="showDetails('petit')">
+        <img src="smalldog.png" alt="Petit chien">
+        <h3>Petit chien</h3>
+        <p>Idéal pour les petits compagnons !</p>
+    </div>
+    <div class="card" onclick="showDetails('moyen')">
+        <img src="chien.png" alt="Moyen chien">
+        <h3>Moyen chien</h3>
+        <p>Pour les chiens de taille moyenne.</p>
+    </div>
+    <div class="card" onclick="showDetails('grand')">
+        <img src="bigdog.jpg" alt="Grand chien">
+        <h3>Grand chien</h3>
+        <p>Pour les grands aventuriers !</p>
+    </div>
+</div>
+
+<div id="product-details" class="product-details">
+    <h2>Croquettes pour chiens de taille: <span id="dog-size"></span></h2>
+    <p>Ces croquettes amélioreront la vitesse de votre chien !</p>
+    <p>Prix: <span id="price"></span></p>
+    <button>Acheter maintenant</button>
+</div>
+
+<div id="login" class="login-form">
+    <h2>Se connecter</h2>
+    <form>
+        <label for="username">Nom d'utilisateur:</label>
+        <input type="text" id="username" required>
+        <label for="password">Mot de passe:</label>
+        <input type="password" id="password" required>
+        <button type="submit">Connexion</button>
+    </form>
+</div>
+
+<script>
+    function showDetails(size) {
+        document.getElementById('home').style.display = 'none';
+        document.getElementById('product-details').style.display = 'block';
+        document.getElementById('login').style.display = 'none';
+
+        document.getElementById('dog-size').textContent = size;
+
+        let price;
+        switch (size) {
+            case 'petit':
+                price = '20€';
+                break;
+            case 'moyen':
+                price = '30€';
+                break;
+            case 'grand':
+                price = '40€';
+                break;
+            default:
+                price = 'Prix non disponible';
+        }
+        document.getElementById('price').textContent = price;
+    }
+
+    function showSection(section) {
+        document.getElementById('home').style.display = 'none';
+        document.getElementById('product-details').style.display = 'none';
+        document.getElementById('login').style.display = 'none';
+
+        if (section === 'home') {
+            document.getElementById('home').style.display = 'block';
+        } else if (section === 'product-details') {
+            document.getElementById('product-details').style.display = 'block';
+        } else if (section === 'login-form') {
+            document.getElementById('login').style.display = 'block';
+        }
+    }
+
+    // Afficher la page d'accueil par défaut
+    showSection('home');
+</script>
+<div data-tf-live="01JBM68F8A7J9S9V0TRATDV224"></div><script src="//embed.typeform.com/next/embed.js"></script>
+</body>
+</html>
+
+
